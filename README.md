@@ -81,9 +81,53 @@ Control system behavior globally or locally inside a `veil.json` file placed at 
 
 ## Installation & CLI Usage
 
-### Local CLI Installation
+### Install From npm
 
-To simulate local CLI development and register the binary link:
+Install Veil in any npm project as a development dependency:
+
+```bash
+npm install --save-dev winnow-veil
+```
+
+Run the CLI through npm's local binary resolution:
+
+```bash
+npx veil scan
+npx veil scan --include-dev
+npx veil hook --install
+```
+
+You can also add project scripts:
+
+```json
+{
+  "scripts": {
+    "veil:scan": "veil scan",
+    "veil:scan:dev": "veil scan --include-dev"
+  }
+}
+```
+
+Then run:
+
+```bash
+npm run veil:scan
+```
+
+### Optional Global Installation
+
+If you want the `veil` command available globally on your machine:
+
+```bash
+npm install -g winnow-veil
+veil scan
+```
+
+For team codebases and CI, prefer the local dev dependency so the scanner version is pinned in `package-lock.json`.
+
+### Local Package Development
+
+When working on Veil itself, build the package and register a local link:
 
 ```bash
 npm run build
